@@ -3,23 +3,23 @@ import { v4 as uuid } from "uuid";
 
 
 @Injectable()
-export class uniqueIdService{
+export class UniqueIdService {
     private numberOfIds = 0;
 
-    public generatedUniqueIdWithPrefix(prefix: string): string{
-        if(!prefix){
+    public generatedUniqueIdWithPrefix(prefix: string): string {
+        if (!prefix) {
             throw Error(`Prefix nao pode ser null`)
         }
         const uniqueId = this.generateUnique();
         this.numberOfIds++;
         return `${prefix} - ${uniqueId}`;
     }
-    
-    public getNumberOfGeneratedUniqueIds():number{
+
+    public getNumberOfGeneratedUniqueIds(): number {
         return this.numberOfIds;
     }
 
-    private generateUnique(): string{
+    private generateUnique(): string {
         return uuid();
     }
 }
